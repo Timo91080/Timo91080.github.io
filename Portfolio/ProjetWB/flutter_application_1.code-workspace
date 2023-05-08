@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "../flt/flutter_application_1"
+		},
+		{
+			"path": "../FlutterProjet"
+		},
+		{
+			"path": "../Portfolio"
+		},
+		{
+			"path": "../tests"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}

@@ -1,0 +1,2 @@
+SELECT NomFou, NomCli FROM cli, fou WHERE NomFou = N
+SELECT ville, pays FROM MAgasin WHERE Pays = 'France'; -- Je selectionne mes ville et pays qui vienne de ma tables magasin mais je veut les ville qui vienne que de france 

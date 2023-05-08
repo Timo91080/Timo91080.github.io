@@ -1,0 +1,1 @@
+SELECT NomFou FROM fou where NumFou NOT IN (SELECT Nomfou from pro WHERE pro.PrixUnit < 50)

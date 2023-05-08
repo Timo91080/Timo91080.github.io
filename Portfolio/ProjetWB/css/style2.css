@@ -1,0 +1,29 @@
+p
+{
+    font-size: 1,5em; /*font size sert a Change de taille */
+}
+p
+{
+   font-family: Arial, Helvetica, sans-serif;   /*font family sert a Change la police */
+}
+
+
+p
+{
+   text-align: justify; /*sert a aligner parfaitement sur le toute la page*/
+}
+
+h1
+{
+    text-align: center; /*sert a centrer le titre*/
+}
+
+.flottant
+{
+    float: left;/*sert a mettre une image tout a gauche*/
+}
+
+p
+{
+    background-color: green;
+}

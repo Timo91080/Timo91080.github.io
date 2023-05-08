@@ -1,0 +1,2 @@
+Select NomPro , NomFou from pro, fou ORDER BY Nompro, NomFou; --je selectionne nompro et nomfou de la table pro et fou et et je l'ai met par ordre alphabétique--
+SELECT Commercial, SUM (vendu) FROM ventes GROUP BY Commercial; -- Je selectionne le commercial et la sommme de la case vendu qui vienne de la table ventes et je les classe en mode groupe--

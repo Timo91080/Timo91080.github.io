@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConcierLuxury</title>
+    <link rel="stylesheet" type="text/css" href="src/css/index.css">
+    <script
+    src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+    
+    
+</head>
+<body onload="initMap()">
+  
+  <header>
+    
+   <div class="toto">  
+    <div id=>
+    <img src="src/img/logo.jpg" alt="Logo_page" width="1px" height="1px"/>
+    
+    
+  </div>
+ 
+</div>
+
+<nav>
+  <a href="#">Acceuil</a>
+  <a href="#products">Informations</a>
+  <a href="contact/ind.html">Contact</a>
+  <div id="indicator"></div>
+  </nav>
+    </header>
+    <h1>AFTLL</h1>   
+    
+  <h4>Qui sommes nous?</h4>
+
+    
+
+
+    
+
+    <section class="main" id="products">
+
+      <div class="content">
+        <div class="card">
+          <div class="left">
+              <h2 class="couleur">Information </h2>
+              <p1 class="manger">AFTLL, société par actions simplifiée, immatriculée sous le SIREN 852302850, est en activité depuis 3 ans. Localisée à VERT-LE-PETIT (91710), elle est spécialisée dans le secteur d'activité des transports routiers de fret interurbains. Societe.com recense 
+                1
+                 établissement
+                ainsi que2 mandataires depuis le début de son activité, le dernier événement notable de cette entreprise date du 06-07-2020.
+            
+                Notre objectif est de vous faire gagner du temps tout en profitant du bonheur, du luxe 
+                
+                
+                
+                Nous sommes au services de tout types de clients en passant du particulier à l’homme d’affaires ou du politiciens à l’artiste .
+                
+                
+                
+                Nos chauffeurs privés professionnels sont aux petits soins pour combler vos désirs et vous faire passer un moment inoubliable en notre compagnie.
+                
+                 
+                
+                Chez concierluxury tout transfert se soit d’être inoubliable !</p>
+          </div>
+          <div class="right">
+              <img src="https://www.lexplicite.fr/wp-content/uploads/2014/12/transports-camions.jpg" alt="" height="100px">
+          </div>
+      </div>
+
+          <div class="card">
+              <div class="left">
+                  <h2 class="couleur">Activités </h2>
+                  <p1 class="manger">Activité : Le transport routier public de marchandises, notamment pour le bâtiment et les travaux publics, la location de bennes, tracteurs et camions grues</p>
+              </div>
+              <div class="right">
+                  <img src="img/transports.jpg" alt="">
+              </div>
+          </div>
+
+          <div class="card">
+              <div class="left">
+                  <h2 class="couleur">Localisation</h2>
+                  <p1  class="manger" >L'entreprise AFTLL est située en Esonne plus précisement à Vers-Le-Petit 91710</p>
+              </div>
+              <div class="right">
+                
+            
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHYNsM4aPjtxGQzn30pNANTO2guwOgO1k"></script>
+                <script>
+                   function initMap() {
+      var uluru = {lat: 48.5508359, lng: 2.366759};
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: uluru
+      });
+      var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+      });
+    }
+                </script>
+              </div>
+              <div id="map"></div>
+          </div>
+      </div>
+  </section>
+ <section class="totog"> 
+  <div class="wrapper">
+    <a class="cta" href="contact/index.html">
+      <span>Nous contacter</span>
+      <span>
+        <svg width="66px" height="43px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <path class="one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path>
+            <path class="two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path>
+            <path class="three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path>
+          </g>
+        </svg>
+      </span> 
+    </a>
+  </div>
+  <ul class="cards">
+    <li>
+      <a href="" class="card">
+        <img src="https://i0.wp.com/rayhaber.com/wp-content/uploads/2021/03/karayolu-yuk-tasimaciliginin-buyuyen-sorunu-sofor-krizi.jpg" class="card__image" alt="" />
+        <div class="card__overlay">
+          <div class="card__header">
+            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+            <img class="card__thumb" src="https://i.imgur.com/7D7I6dI.png" alt="" />
+            <div class="card__header-text">
+             
+          </div>
+         
+        </div>
+      </a>      
+    </li>
+    <li>
+      <a href="" class="card">
+        <img src="https://matraquilhofrance.fr/uploads/media/images/cms/medias/thumb_/cms/medias/6283969b3e13f_images_medium.jpeg" class="card__image" alt="" />
+        <div class="card__overlay">        
+          <div class="card__header">
+           
+            <div class="card__header-text">
+              
+            </div>
+          </div>
+         
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="" class="card">
+        <img src="https://transports-brun.com/images/histoire/transport-routier-de-fret-interurbains-2.webp" class="card__image" alt="" />
+        <div class="card__overlay">
+          <div class="card__header">
+            
+            <div class="card__header-text">
+              
+            </div>
+          </div>
+         
+        </div>
+      </a>
+    </section>
+    <footer>
+      <div class="tour">
+         <h4>Nous Contacter</h4>
+         <p>01 60 77 85 28</p>
+          
+      </div>
+      <div class="tour">
+          <h4>Lieu</h4>
+          <p>Vers-Le-Petit</p>
+          
+      </div>
+      <div class="tour">
+          <h4>Email</h4>
+          <p>aftll@mail.com</p>
+          
+    </footer>
+  
+     
+      
+    
+</body>
+</html>

@@ -299,6 +299,7 @@ overflow: hidden;
 
 .fivem button:hover{
     color: white;
+    cursor: pointer;
 
 }
 

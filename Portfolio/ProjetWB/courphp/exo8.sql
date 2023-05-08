@@ -1,1 +1,0 @@
-  Select NomFou, Min(PrixUnit) from pro, fou where NomPro = 'chef'

@@ -87,7 +87,7 @@ header .header-right img {
 }
 
 .about {
-  margin-top: 150px;
+  margin-top: 110px;
 }
 .about .signature {
   width: 30%;
@@ -97,6 +97,12 @@ header .header-right img {
   font-size: 30px;
   line-height: 30px;
   font-weight: 300;
+}
+.about-me__picture{
+
+height: 100px;
+width: 100%;
+
 }
 
 .images {

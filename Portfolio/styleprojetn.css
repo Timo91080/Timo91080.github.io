@@ -1209,14 +1209,14 @@ height: 60px;
     .monde {
       position: absolute;
 
-      top: 250%;
+      top: 305%;
 
 
     }
 
     .tkt3{
 position: absolute;
-top: 265%;
+top: 323%;
 
     }
 
@@ -1231,7 +1231,7 @@ top: 265%;
 .simple{
 
     position: absolute;
-    top: 305%;
+    top: 378%;
     right: 20%;
     font-size: 25px;
 }
@@ -1239,7 +1239,7 @@ top: 265%;
 .pied2{
 
    position: absolute;
-   top: 578%; 
+   top: 710%; 
    left: 78%;
 }
 
@@ -1292,7 +1292,7 @@ top: 265%;
 
 .rust2{
 
-	height: 350px;
+	height: 340px;
 }
 
 

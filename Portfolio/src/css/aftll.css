@@ -47,7 +47,7 @@ nav
 {
     position: absolute;
     top: 26px;
-    left: 30%;
+    left: 23%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -382,6 +382,8 @@ font-weight: bolder;
     div.manger{
     font-size: x-small;
     }
+
+   
     h2 {
       color: yellow;
        border-bottom: 1px yellow groove;

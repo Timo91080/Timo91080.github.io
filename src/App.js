@@ -19,15 +19,20 @@ function App () {
          <Switch> 
    <Route path="/login" component={Login} />    
    <Route path="/register" component={Register} />   
+   <Hero></Hero>
+     
+      
+     
         </Switch>
+        <Nhl></Nhl>
+        <Cards></Cards>
+     <Foo></Foo>
+
    </Router> 
      
-
-     <Hero></Hero>
-      <Nhl></Nhl>
-      <Cards></Cards>
-     <Foo></Foo>
+   
      
+ 
      
 
      

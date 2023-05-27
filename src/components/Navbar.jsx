@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {AiOutlineClose, AiOutlineMenu} from 'react-icons/ai'
+
 import { useHistory } from 'react-router-dom';
 
 const Navbar = () => {
@@ -32,26 +32,16 @@ const Navbar = () => {
           <li> <button className='p-4 bg-[#a0f3d9] rounded-md' onClick={handleRegistration}>
  S'enregistrer
           </button></li>
+          <li> <button className='p-4 ml-1 bg-[#000000] rounded-md'>
+ Deconnexion
+          </button></li>
         
        
         </ul>
         </div>
-        <div onClick={handleNav} className='block md:hidden'>
-          {!nav ? <AiOutlineClose size= {20}/> :  <AiOutlineMenu size={20} />}
-       
+        
         </div>
-        <div className={!nav ? 'fixed left-0 top-0 w-[60%] border-r-gray-900 bg-[#000300] ease-in-out duration-500': 'fixed left-[-100%]'}>
-        <h1 className='w-full text-3xl font-bold text-[#a0f3d9] m-4 '>M2L.</h1>
-
-          <ul className='uppercase p-4 text-white'>
-        <li className='p-4 border-b border-gray-600'>S'ebregistrer</li> 
-        <li className='p-4 border-b border-gray-600'>Connexion</li>
-        <li className='p-4 '>Formation</li>
-      
-       
-          </ul>
-        </div>
-    </div>
+    
   )
 }
 

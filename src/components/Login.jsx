@@ -1,31 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import { UserContext } from '../context/usercontext';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const history = useHistory();
+  const [email, setEmail] = useState(''); // État pour stocker l'email
+  const [password, setPassword] = useState(''); // État pour stocker le mot de passe
+  const { signIn } = useContext(UserContext); // Importer la fonction de contexte utilisateur appropriée
+  const history = useHistory(); // Utilitaire de l'historique de navigation
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+    setEmail(event.target.value); // Mettre à jour l'état de l'email lorsqu'il y a un changement dans l'entrée
   };
 
   const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+    setPassword(event.target.value); // Mettre à jour l'état du mot de passe lorsqu'il y a un changement dans l'entrée
   };
 
   const handleClose = () => {
-    // Rediriger vers une autre page lorsque l'utilisateur ferme le formulaire
-    history.push('/autre-page');
+    history.push('/'); // Rediriger l'utilisateur vers une autre page lors de la fermeture du formulaire de connexion
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Empêcher le comportement par défaut du formulaire
 
-    // Faites ici votre logique d'enregistrement (par exemple, envoi des données au serveur)
+    try {
+      // Appeler la fonction de connexion du contexte utilisateur pour envoyer les données au serveur
+      await signIn(email, password);
 
-    console.log('Email:', email);
-    console.log('Password:', password);
+      // Réinitialiser les champs du formulaire
+      setEmail('');
+      setPassword('');
+
+      alert('Connexion réussie !');
+      history.push('/private/private-acceuil'); // Rediriger vers la page du tableau de bord ou une autre page protégée
+
+    } catch (error) {
+      // Gérer les erreurs de connexion
+      console.error('Erreur lors de la connexion :', error);
+    }
   };
 
   return (
@@ -40,10 +52,7 @@ const Login = () => {
         <div className="p-6">
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="email"
-              >
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
                 Email
               </label>
               <input
@@ -57,10 +66,7 @@ const Login = () => {
               />
             </div>
             <div className="mb-6">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="password"
-              >
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
                 Password
               </label>
               <input
@@ -75,8 +81,7 @@ const Login = () => {
             </div>
             <div className="flex items-center justify-between">
               <p className="text-gray-700 text-sm">
-                En cliquant sur "Register", vous acceptez les conditions
-                d'utilisation.
+                En cliquant sur "Register", vous acceptez les conditions d'utilisation.
               </p>
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

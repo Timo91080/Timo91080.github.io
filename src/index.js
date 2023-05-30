@@ -3,16 +3,34 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { UserContextProvider } from './context/usercontext';
+import { UserProvider } from './context/usercontext';
 
 const root = ReactDOM.createRoot
 (document.getElementById('root'));
 root.render(
   <BrowserRouter>
-  <UserContextProvider> 
+  <UserProvider> 
     <App />
-    </UserContextProvider>
+    </UserProvider>
    </BrowserRouter>
   
 );
 
+
+/*import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+import { UserProvider } from './context/usercontext';
+
+const root = ReactDOM.createRoot
+(document.getElementById('root'));
+root.render(
+  <BrowserRouter>
+  <UserProvider> 
+    <App />
+    </UserProvider>
+   </BrowserRouter>
+  
+);*/

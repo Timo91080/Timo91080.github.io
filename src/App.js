@@ -23,14 +23,17 @@ function App() {
             <Route path="/register" component={Register} />
             <Private exact path="/private" component={Private} />
             <Private exact path="/private/private-acceuil" component={PrivateHero} />
+          
             
             <Route path="/" component={Hero} />
+          
           </Switch>
           <Nhl />
           
           <Switch>
             
           <Route path="/caca" component={Caca} />
+          
           <Route path="/" component={Cards} />
           </Switch>
           <Foo />

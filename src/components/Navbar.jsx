@@ -26,7 +26,9 @@ const Navbar = () => {
   const logOut = async () => {
     try {
       await signOut(auth); // Déconnexion de l'utilisateur à l'aide de l'API d'authentification Firebase
-      history.push('/'); // Rediriger l'utilisateur vers la page d'accueil après la déconnexion
+      window.location.href = '/'; // Rediriger l'utilisateur vers la page d'accueil après la déconnexion
+      alert("Vous vous déconnecter");
+    
     } catch {
       alert("Pour quelque raison vous ne pouvez pas vous déconnecter, s'il vous plaît vérifier votre connexion internet et réessayer");
     }

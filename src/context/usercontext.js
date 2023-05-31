@@ -1,6 +1,8 @@
 import React, { createContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { signOut } from 'firebase/auth';
+
 import { auth } from '../firebase-config';
 
 
@@ -26,7 +28,14 @@ const UserProvider = ({ children }) => {
   };
   
   const logout = () => {
-    setUser(null);
+    try {
+      signOut(auth)
+      .then(() => {
+        history.push('/acceuil');
+      }); // Rediriger l'utilisateur vers la page d'accueil après la déconnexion
+    } catch {
+      alert("Pour quelque raison vous ne pouvez pas vous déconnecter, s'il vous plaît vérifier votre connexion internet et réessayer");
+    }
   };
  
   const authContextValue = {

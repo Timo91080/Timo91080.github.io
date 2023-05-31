@@ -1,56 +1,59 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import Forma from '../assets/formation.png'
-
-
+import { UserContext } from '../context/usercontext';
+import Forma from '../assets/formation.png';
+import { collection, getDocs, query, limit } from 'firebase/firestore';
+import { auth, db } from '../firebase-config';
 
 const Cards = () => {
+  const [formations, setFormations] = useState([]);
+  const { user } = useContext(UserContext); // Importer le contexte utilisateur
+  const history = useHistory();
 
-    const history = useHistory();
+  useEffect(() => {
+    const getFormations = async () => {
+      const q = query(collection(db, 'formation'), limit(3)); // Limiter la récupération à trois formations
+      const querySnapshot = await getDocs(q);
+      const formationsData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setFormations(formationsData);
+    };
 
-    const handlepop = () => {
-        // Rediriger l'utilisateur vers une autre page lors de la fermeture du formulaire d'inscription
-        history.push('/caca'); // Remplacez '/accueil' par le chemin de la page souhaitée
-      };
-    
+    getFormations();
+  }, []);
+
+  const handlePop = () => {
+    if (user) {
+      history.push('/caca'); // Rediriger vers la page "Caca" si l'utilisateur est connecté
+    } else {
+      window.scrollTo(0, 0); // Faire défiler vers le haut de la page
+      history.push('/login'); // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
+    }
+  };
 
   return (
-    <div className='w-full py-[10rem] px-4 bg-white'>
-        <h1 className='max-w-[840px] mx-auto justify-center text-center mb-40 py-4 font-bold text-4xl'>Les Formations en Tendances
-
-        </h1>
-      <div className='max-w-[1240px] mx-auto grid md:grid-cols-3 gap-8'>
+    <div className='debut bg-white mx-auto grid md:grid-cols-3 gap-8 '>
+      {formations.map((formation) => (
+        <div className='w-full py-[10rem] px-4 bg-white' key={formation.id}>
           <div className='w-full shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300'>
-              <img className='w-20 mx-auto mt-[-3rem] bg-white' src={Forma} alt="/" />
-              <h2 className='text-2xl font-bold text-center py-8'>Formation de .....</h2>
-              <p className='text-center text-4xl font-bold'>€prix</p>
-              <div className='text-center font-medium'>
-                  <p className='py-2 border-b mx-8 mt-8'> Description: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus ullam impedit molestiae non pariatur voluptates quam suscipit esse maiores, deserunt, dolorum nostrum voluptatem quaerat reprehenderit sed! Reiciendis modi repellat voluptate?</p>
-                 
-              </div>
-              <button className='bg-[#a0f3d9] w-[200px] rounded-md font-medium my-6 mx-auto px-6 py-3' onClick={() => handlepop()}>S'inscrire à la formation</button>
+            <img className='w-20 mx-auto mt-[-3rem] bg-white' src={Forma} alt='/' />
+            <h2 className='text-2xl font-bold text-center py-8'>{formation.titre}</h2>
+            <p className='text-center text-4xl font-bold'>{formation.duree} mois</p>
+            <p className='text-center text-4xl'>{formation.lieu}</p>
+            <div className='text-center font-medium'>
+              <p className='py-2 border-b mx-8 mt-8'>{formation.description}</p>
+            </div>
+            <button
+              className='bg-[#a0f3d9] w-[200px] rounded-md font-medium my-6 mx-auto px-6 py-3'
+              onClick={() => handlePop()}
+            >
+              S'inscrire à la formation
+            </button>
           </div>
-          <div className='w-full shadow-xl bg-gray-100 flex flex-col p-4 md:my-0 my-8 rounded-lg hover:scale-105 duration-300'>
-              <img className='w-20 mx-auto mt-[-3rem] bg-transparent' src={Forma} alt="/" />
-              <h2 className='text-2xl font-bold text-center py-8'>Formation de....</h2>
-              <p className='text-center text-4xl font-bold'>Prix€</p>
-              <div className='text-center font-medium'>
-                  <p className='py-2 border-b mx-8 mt-8'>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae facere optio temporibus error, odit dolor, adipisci sit voluptatibus dicta unde officia, ex laborum. Cupiditate optio rem iste autem neque? Similique.</p>
-                  
-              </div>
-              <button className='bg-black text-[#a0f3d9] w-[200px] rounded-md font-medium my-6 mx-auto px-6 py-3'onClick={() => handlepop()}>S'inscrire à la formation</button>
-          </div>
-          <div className='w-full shadow-xl flex flex-col p-4 my-4 rounded-lg hover:scale-105 duration-300'>
-              <img className='w-20 mx-auto mt-[-3rem] bg-white' src={Forma} alt="/" />
-              <h2 className='text-2xl font-bold text-center py-8'>Formation de .....</h2>
-              <p className='text-center text-4xl font-bold'>prix€</p>
-              <div className='text-center font-medium'>
-                  <p className='py-2 border-b mx-8 mt-8'>Description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque ut inventore, modi praesentium quis illum aliquam hic tenetur assumenda labore saepe voluptas tempora ea reiciendis facilis? Expedita corrupti aliquid perspiciatis.</p>
-             
-              </div>
-              <button className='bg-[#a0f3d9] w-[200px] rounded-md font-medium my-6 mx-auto px-6 py-3'>S'inscrire à la formation</button>
-          </div>
-      </div>
+        </div>
+      ))}
     </div>
   );
 };

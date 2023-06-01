@@ -12,7 +12,7 @@ const Cards = () => {
 
   useEffect(() => {
     const getFormations = async () => {
-      const q = query(collection(db, 'formation'), limit(3)); // Limiter la récupération à trois formations
+      const q = query(collection(db, 'formation'), limit()); // Limiter la récupération à trois formations
       const querySnapshot = await getDocs(q);
       const formationsData = querySnapshot.docs.map((doc) => ({
         id: doc.id,

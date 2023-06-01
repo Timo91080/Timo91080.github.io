@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '../context/usercontext';
 
-const Login = () => {
+const AdminLogin = () => {
   const [email, setEmail] = useState(''); // État pour stocker l'email
   const [password, setPassword] = useState(''); // État pour stocker le mot de passe
   const { signIn } = useContext(UserContext); // Importer la fonction de contexte utilisateur appropriée
@@ -24,15 +24,22 @@ const Login = () => {
     event.preventDefault(); // Empêcher le comportement par défaut du formulaire
 
     try {
-      // Appeler la fonction de connexion du contexte utilisateur pour envoyer les données au serveur
-      await signIn(email, password);
+      // Vérifier si l'email et le mot de passe sont valides pour l'administrateur
+      if (email.includes('@admin')) {
+        // Appeler la fonction de connexion du contexte utilisateur pour envoyer les données au serveur
+        await signIn(email, password);
+        
 
-      // Réinitialiser les champs du formulaire
-      setEmail('');
-      setPassword('');
+        // Réinitialiser les champs du formulaire
+        setEmail('');
+        setPassword('');
 
-      alert('Connexion réussie !');
-      history.push('/private/private-acceuil'); // Rediriger vers la page du tableau de bord ou une autre page protégée
+        alert('Connexion réussie en tant qu\'administrateur !');
+        history.push('/'); // Rediriger vers la page de l'administrateur ou une autre page protégée pour les administrateurs
+
+      } else {
+        alert('Erreur de connexion administrateur : Vérifiez votre email et votre mot de passe.');
+      }
 
     } catch (error) {
       // Gérer les erreurs de connexion
@@ -40,15 +47,11 @@ const Login = () => {
     }
   };
 
-  const handleAdminLogin = () => {
-    history.push('/admin-login'); // Rediriger l'utilisateur vers le formulaire de connexion de l'administrateur
-  };
-
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-to-b from-blue-400 to-green-200">
       <div className="bg-white w-full max-w-md rounded shadow-md">
         <div className="flex justify-between items-center bg-blue-500 px-4 py-2 rounded-t">
-          <h5 className="text-white text-sm font-bold">Login</h5>
+          <h5 className="text-white text-sm font-bold">Admin Login</h5>
           <button className="text-white text-xl" onClick={handleClose}>
             &times;
           </button>
@@ -87,21 +90,12 @@ const Login = () => {
               <p className="text-gray-700 text-sm">
                 En cliquant sur "Login", vous acceptez les conditions d'utilisation.
               </p>
-              <div>
-                <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  type="submit"
-                >
-                  Login
-                </button>
-                <button
-                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-4"
-                  type="button"
-                  onClick={handleAdminLogin}
-                >
-                  Se connecter en mode administrateur
-                </button>
-              </div>
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit"
+              >
+                Login
+              </button>
             </div>
           </form>
         </div>
@@ -110,4 +104,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default AdminLogin;

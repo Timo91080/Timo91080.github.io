@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import Forma from '../assets/formation.png';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { collection, addDoc, getDocs, query, limit } from 'firebase/firestore';
 import { db } from '../firebase-config';
+import { UserContext } from '../context/usercontext';
 
 const Caca = () => {
+  const { user, setUser } = useContext(UserContext);
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
     phoneNumber: '',
     location: '',
-    selectedFormation: '', // Formation sélectionnée
+    selectedFormation: '',
   });
 
   const [formations, setFormations] = useState([]);
@@ -20,7 +22,7 @@ const Caca = () => {
   useEffect(() => {
     const fetchFormations = async () => {
       try {
-        const q = query(collection(db, 'formation'), limit(3)); // Limiter la récupération à trois formations
+        const q = query(collection(db, 'formation'), limit(3));
         const querySnapshot = await getDocs(q);
         const formationsData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
@@ -41,19 +43,20 @@ const Caca = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Ajoutez ici la logique pour traiter les données du formulaire d'inscription
     console.log('Formulaire soumis :', formData);
 
+    // Vérifier si l'adresse e-mail correspond à l'utilisateur connecté
+    if (user.email !== formData.email) {
+      alert('L\'adresse e-mail doit être la même que celle utilisée pour la connexion.');
+      return;
+    }
+
     try {
-      // Enregistrement des données d'inscription dans la base de données
       const docRef = await addDoc(collection(db, 'inscriptions'), {
         formData,
       });
       console.log('Document inscriptions ajouté avec l\'ID :', docRef.id);
 
-      // Effectuez d'autres opérations supplémentaires ici
-
-      // Réinitialisation des valeurs du formulaire
       setFormData({
         firstName: '',
         lastName: '',
@@ -63,15 +66,11 @@ const Caca = () => {
         selectedFormation: '',
       });
       alert('Inscription réussie !');
-      history.push('/'); // Rediriger vers la page d'accueil après l'inscription
-
-      // Redirection vers une autre page après le traitement du formulaire
-      history.push('/'); // Remplacez '/accueil' par le chemin de la page souhaitée
+      history.push('/');
     } catch (error) {
       console.error('Erreur lors de l\'enregistrement des données d\'inscription :', error);
     }
   };
-
   return (
     <div className='flex justify-center items-center h-screen bg-white'>
       <div className='max-w-md bg-gray-100 p-8'>

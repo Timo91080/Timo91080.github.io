@@ -62,6 +62,7 @@ const Register = () => {
       // Appeler la fonction d'inscription du contexte utilisateur pour envoyer les données au serveur
       await createUserWithEmailAndPassword(auth, email, password);
       await register(userData);
+      
 
       // Réinitialiser les champs du formulaire
       setEmail('');
